@@ -11,6 +11,7 @@ from model import ChessModel
 from dataset import ChessDataset
 from tqdm import tqdm
 import chess.pgn
+import pickle
 
 #add games
 games = []
@@ -64,6 +65,7 @@ for epoch in range(num_epochs):
     print(running_loss / len(dataloader))
 torch.save(model.state_dict(), "/models/Menace1.pth")
 
-
+with open("move_to_int.pkl", "wb") as file:
+    pickle.dump(move_to_int, file)
 
 
