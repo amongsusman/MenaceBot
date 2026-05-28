@@ -41,9 +41,16 @@ def predict_move(board: Board):
     return None
 
 board = Board()
-while True:
-    move = input("put ur move ")
-    board.push_uci(move)
+game_running = True
+while game_running:
+    move_is_invalid = True
+    while move_is_invalid:
+        move = input("Please type in your move against the AI: ")
+        try:
+            board.push_uci(move)
+            move_is_invalid = False
+        except:
+            print("Sorry, your move is invalid.")
     print(board.unicode())
     print()
     ai_move = predict_move(board)
